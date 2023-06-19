@@ -11,190 +11,71 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <style>
-    body {
-        margin: 0px;
-        padding: 0px;
-        font-family: Arial, 'Microsoft JhengHei', sans-serif;
-        background-color: #2A284E;
-    }
-
-    nav {
-        position: fixed;
+    .general-container {
         width: 100%;
-        padding: 8px 8px;
-        z-index: 10;
-        background-color: #2A284E;
-    }
-
-    .links-search {
-        margin: auto;
-        display: flex;
-        max-width: 1080px;
-    }
-
-    :root {
-        --search-width: 200px;
-    }
-
-    .links {
-        width: calc(100% - var(--search-width));
-        margin: auto;
-        display: flex;
-        justify-content: end;
-    }
-
-    .search {
-        width: var(--search-width);
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    li {
-        float: left;
-        padding: 4px 4px;
-    }
-
-    nav a {
-        float: left;
-        color: white;
-        text-align: center;
-        padding: 5px 10px;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 30px;
-        transition: 0.3s;
-    }
-
-    nav a:hover {
-        background-color: #F2BB36;
-        color: #000;
-    }
-
-    .nav-active {
-        background-color: #F2BB36;
-        color: #000;
-    }
-
-    /* CSS for search area */
-    .search-container {
-        position: relative;
-        float: right;
-        padding: 14px 16px 14px 0px;
-    }
-
-    .search-container input[type="text"] {
-        padding: 6px;
-        border: none;
-        font-size: 14px;
-        background-color: transparent;
-        color: white;
-        border-radius: 20px;
-        width: 0;
-        transition: width 0.3s ease-in-out;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .search-container input[type="text"].expanded {
-        width: 150px;
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .search-container .search-icon {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        transform: translateY(-50%);
-        font-size: 18px;
-        color: #ddd;
-        cursor: pointer;
-    }
-
-    .main {
-        margin: auto;
-        min-height: 100vh;
-        max-width: 1080px;
-        padding: 72px 4px 4px 10px;
-    }
-
-    .slideshow {
-        position: relative;
-        width: 100%;
-        height: 650px;
-        overflow: hidden;
-    }
-
-    .slide {
-        display: none;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        animation: slideAnimation 0.5s ease-in-out;
-    }
-
-    .float {
-        position: absolute;
-        z-index: 1;
-        bottom: 30px;
-        left: 30px;
-        color: white;
-        font-weight: bold;
-    }
-
-    .headline {
-        font-size: 40px;
-        text-shadow: 2px 2px 4px #000000;
-    }
-
-    .slide-index {
-        font-size: 24px;
-        margin-right: 30px;
-        text-shadow: 2px 2px 4px #000000;
-    }
-
-    .navigation {
         margin: 40px 0px;
+        padding: 40px 0px;
+        line-height: 1.333;
+        margin-bottom: 10px;
+        color: rgb(228 230 235);
     }
 
-    .navigation a {
-        display: inline-block;
-        text-decoration: none;
-        color: #000;
-        background-color: #FFF;
-        padding: 10px 15px;
-        border-radius: 100px;
-        margin-right: 30px;
+    .general-container>img,
+    .general-container>* img {
+        width: 100%;
+        object-fit: cover;
+        filter: grayscale(20%);
     }
 
-    .start-button {
-        background-color: white;
-        padding: 15px 60px;
-        color: black;
-        font-size: 20px;
-        font-weight: bold;
-        border: none;
-        text-transform: uppercase;
+    .general-container>p,
+    .general-container>* p {
+        margin: 0px 0px 10px 0px;
     }
 
-    .start-button:hover {
-        box-shadow: inset 0 -5px 0 black;
+    .about-image-text {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
     }
 
-    @keyframes slideAnimation {
-        0% {
-            opacity: 0;
-            transform: translateX(100%);
-        }
+    .about-image {
+        width: 70%;
+        margin: 0px 10px 0px 0px;
+    }
 
-        100% {
-            opacity: 1;
-            transform: translateX(0);
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-item {
+        flex: 0 0 33.33%;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .flex-image {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .flex-item img {
+        width: 100%;
+        height: auto;
+        filter: brightness(80%);
+        transition: transform 0.3s, filter 0.3s;;
+    }
+
+    .flex-item:hover img {
+        transform: scale(1.2);
+        filter: brightness(100%);
+    }
+
+    @media (max-width: 600px) {
+        .flex-item {
+            flex: 0 0 100%;
         }
     }
 </style>
@@ -221,7 +102,8 @@
     </nav>
 
     <div class="main">
-        <div class="slideshow">
+        <!-- 首頁幻燈片 -->
+        <div class="slideshow" id="slideshow">
             <img class="slide" src="./image/slides/70E99820-B090-4668-A429-60138E94F763.jpg" alt="圖片1">
             <img class="slide" src="./image/slides/2EF99602-A727-4596-A003-C78C1BCFF4DA.jpg" alt="圖片2">
             <img class="slide" src="./image/slides/A5ED3A9F-5DF5-4E1C-A8F1-2B9FCFDB15A0.jpg" alt="圖片3">
@@ -242,6 +124,29 @@
                 </button>
             </div>
         </div>
+
+        <!-- 關於 -->
+        <div class="general-container" id="about">
+            <img src="./image/about/86D7BFF1-DEBE-48CF-97B6-FD8D182684FA.jpg"
+                style="height: 300px; object-position: top;">
+            <p>在一個陽光明媚的早晨，我漫遊在河畔的小路上，微風拂過臉頰，帶著一絲清爽的氣息。我深深地吸了一口氣，感受著大自然而，魅力和寧靜。</p>
+            <p>這個世界就是如此美麗而多彩，每一天都給我帶來新的機會和挑戰。我相信，每個人都有自己獨特的故事和價值，而我也很有趣希望將我的故事與這個世界分享。</p>
+            <div class="about-image-text">
+                <div class="about-image">
+                    <img src="./image/about/IMG_3069.jpg" />
+                </div>
+                <div class="about-text">
+                    <p>我的名字是OOO，我是一個積極樂觀的人。我熱愛探索未知，勇於面對困難。無論是在學習還是工作中，我都開始永遠保持著對知道的渴望和追求。我堅信持續學習是不斷成長和進步的關鍵，因此我不斷尋求學習的機會，不斷拓寬自己的技能和知識領域。
+                    </p>
+                    <p>我有一顆對人之類的關懷之心，熱衷於幫助別人。我相信每個人都有改變世界的力量，無論是通過一個微笑、一句話鼓舞的話語，還是通過參與社區服務和志願活動。我希望能為這個社團做出一份積極的貢獻，使世界變得更美好。
+                    </p>
+                    <p>同時，我也是一個熱愛藝術和創作的人。音樂、繪畫、寫作是我表達自己的方式。這些藝術形式讓我感受到無限的創作力和想法像力，讓我能夠以不同的角度看待世界，並通過作品與他人分享我的感受和思考。</p>
+                    <p>生活中，我注意平衡。我喜歡參加戶外活動，享受大自然的美景，也喜歡和家人朋友一起度過溫暖的時光。我相信，生活中的快樂與幸福來自於內心的滿足與所愛之人分享的時刻。</p>
+                    <p>總的來說，我是一個充滿熱情、嚮往知識、追求進步的人。我相信通過持續的努力和積極的心態，我可以創造出屬於自己的精華彩故事，並與這個世界共同成長和進步。我期待著與你們共同分享人生的旅行，一起創造美好的未來。
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -253,6 +158,7 @@
             slides[currentSlide].style.display = "none";
             currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].style.display = "block";
+            document.getElementsByClassName('slide-index')[0].innerText = currentSlide + 1 + '/' + slides.length;
         }
 
         function showNextSlide() {
@@ -274,10 +180,7 @@
         showSlide(currentSlide);
 
         let loop = setInterval(function () { showNextSlide(); }, 5000);
-    </script>
 
-
-    <script>
         function expandInput() {
             var input = document.getElementById('searchInput');
             input.classList.add('expanded');
