@@ -65,7 +65,8 @@
         width: 100%;
         height: auto;
         filter: brightness(80%);
-        transition: transform 0.3s, filter 0.3s;;
+        transition: transform 0.3s, filter 0.3s;
+        ;
     }
 
     .flex-item:hover img {
@@ -86,10 +87,10 @@
         <div class="links-search">
             <div class="links">
                 <ul>
-                    <li><a href="#" class="nav-active">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Daily</a></li>
-                    <li><a href="#">Love</a></li>
+                    <li><a id="homeLink" class="nav-link nav-active">Home</a></li>
+                    <li><a id="aboutLink" class="nav-link">About</a></li>
+                    <li><a id="dailyLink" class="nav-link">Daily</a></li>
+                    <li><a id="loveLink" class="nav-link">Love</a></li>
                 </ul>
             </div>
             <div class="search">
@@ -147,6 +148,48 @@
                 </div>
             </div>
         </div>
+
+        <!-- 日常 -->
+        <div class="general-container" id="daily">
+            <div class="flex-container">
+                <div class="flex-item">
+                    <p>1</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/90E44496-EEA5-440D-9B58-CB1563EA025B.jpg" alt="Image 1">
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <p>2</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/IMG_2143.jpg" alt="Image 2">
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <p>3</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/IMG_2172.jpg" alt="Image 3">
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <p>4</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/IMG_2283.jpg" alt="Image 4">
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <p>5</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/IMG_3145.JPG" alt="Image 5">
+                    </div>
+                </div>
+                <div class="flex-item">
+                    <p>6</p>
+                    <div class="flex-image">
+                        <img src="./image/daily/IMG_7873.jpg" alt="Image 6">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -191,6 +234,42 @@
             var input = document.getElementById('searchInput');
             input.classList.remove('expanded');
         }
+
+        document.getElementById('homeLink').addEventListener("click", () => {
+            document.getElementById('slideshow').scrollIntoView({ behavior: "smooth" });
+        }, false);
+
+        document.getElementById('aboutLink').addEventListener("click", () => {
+            document.getElementById('about').scrollIntoView({ behavior: "smooth" });
+        }, false);
+
+        document.getElementById('dailyLink').addEventListener("click", () => {
+            document.getElementById('daily').scrollIntoView({ behavior: "smooth" });
+        }, false);
+
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function clearLinkActive() {
+            navLinks.forEach(element => {
+                element.classList.remove('nav-active');
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            let scrollpos = window.scrollY;
+            console.log(window.scrollY);
+            if (0 < scrollpos && scrollpos < 700) {
+                clearLinkActive();
+                document.querySelector('#homeLink').classList.add('nav-active');
+            } else if (700 < scrollpos && scrollpos < 1545) {
+                clearLinkActive();
+                document.querySelector('#aboutLink').classList.add('nav-active');
+            } else if (scrollpos > 1545) {
+                clearLinkActive();
+                document.querySelector('#dailyLink').classList.add('nav-active');
+            }
+        })
+
     </script>
 </body>
 

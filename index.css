@@ -56,6 +56,7 @@ nav a {
     font-weight: bold;
     border-radius: 30px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 nav a:hover {
@@ -85,6 +86,7 @@ nav a:hover {
     transition: width 0.3s ease-in-out;
     opacity: 0;
     pointer-events: none;
+    color: #FFF;
 }
 
 .search-container input[type="text"].expanded {
