@@ -9,76 +9,13 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <style>
-    .general-container {
-        width: 100%;
-        margin: 40px 0px;
-        padding: 40px 0px;
-        line-height: 1.333;
-        margin-bottom: 10px;
-        color: rgb(228 230 235);
-    }
+    
 
-    .general-container>img,
-    .general-container>* img {
-        width: 100%;
-        object-fit: cover;
-        filter: grayscale(20%);
-    }
 
-    .general-container>p,
-    .general-container>* p {
-        margin: 0px 0px 10px 0px;
-    }
-
-    .about-image-text {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .about-image {
-        width: 70%;
-        margin: 0px 10px 0px 0px;
-    }
-
-    .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .flex-item {
-        flex: 0 0 33.33%;
-        padding: 10px;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-
-    .flex-image {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-    }
-
-    .flex-item img {
-        width: 100%;
-        height: auto;
-        filter: brightness(80%);
-        transition: transform 0.3s, filter 0.3s;
-        ;
-    }
-
-    .flex-item:hover img {
-        transform: scale(1.2);
-        filter: brightness(100%);
-    }
-
-    @media (max-width: 600px) {
-        .flex-item {
-            flex: 0 0 100%;
-        }
-    }
 </style>
 </head>
 
@@ -190,6 +127,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- 最愛 -->
+        <div class="general-container" id="love">
+            <div class="love-section">
+                <div class="love-text">
+                    <h3>我們家的寵物</h3>
+                    我們家有一隻狗、兩隻貓、三隻鬆獅蜥、三隻守宮
+                </div>
+                <div class="love-images">
+                    <div class="love-image" data-aos="fade-up">
+                        <img src="./image/love/IMAG0175_Original.jpg" style="margin-bottom: 50px;" />
+                    </div>
+                    <div class="love-image" data-aos="fade-up">
+                        <img src="./image/love/IMG_1450.JPG" style="margin-top: 50px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -247,6 +202,10 @@
             document.getElementById('daily').scrollIntoView({ behavior: "smooth" });
         }, false);
 
+        document.getElementById('loveLink').addEventListener("click", () => {
+            document.getElementById('love').scrollIntoView({ behavior: "smooth" });
+        }, false);
+
         const navLinks = document.querySelectorAll('.nav-link');
 
         function clearLinkActive() {
@@ -264,12 +223,16 @@
             } else if (700 < scrollpos && scrollpos < 1545) {
                 clearLinkActive();
                 document.querySelector('#aboutLink').classList.add('nav-active');
-            } else if (scrollpos > 1545) {
+            } else if (scrollpos > 1545 && scrollpos < 2350) {
                 clearLinkActive();
                 document.querySelector('#dailyLink').classList.add('nav-active');
+            } else if (scrollpos > 2350) {
+                clearLinkActive();
+                document.querySelector('#loveLink').classList.add('nav-active');
             }
         })
 
+        AOS.init();
     </script>
 </body>
 
