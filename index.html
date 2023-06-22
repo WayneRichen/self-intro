@@ -13,8 +13,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <style>
-    
-
 
 </style>
 </head>
@@ -57,7 +55,7 @@
                     <span class="slide-index">1/4</span>
                     <a href="#" class="next"><i class="fa-solid fa-chevron-right"></i></a>
                 </div>
-                <button class="start-button">
+                <button class="start-button" id="letsGoLink">
                     Let's Go
                 </button>
             </div>
@@ -145,6 +143,32 @@
                 </div>
             </div>
         </div>
+
+        <!-- 最愛第二區 -->
+        <div class="general-container">
+            <div class="love2-section">
+                <div class="dog-text">
+                    <img src="./image/love2/48AC62F7-4C76-432D-83C8-873292462ED3.jpg" data-aos="fade-right" />
+                    <p>一些可愛的小朋友們<br>
+                        全部都健健康康的長大</p>
+                </div>
+                <div class="pets">
+                    <img src="./image/love2/IMG_1010.jpg" data-aos="fade-left" />
+                    <img src="./image/love2/IMG_1932.jpg" data-aos="fade-left" />
+                    <img src="./image/love2/IMG_8279.jpg" data-aos="fade-left" />
+                </div>
+            </div>
+        </div>
+
+        <!-- 搜尋 -->
+        <div class="general-container">
+            <div class="search-section">
+                <form>
+                    <input type="search" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 
@@ -206,6 +230,10 @@
             document.getElementById('love').scrollIntoView({ behavior: "smooth" });
         }, false);
 
+        document.getElementById('letsGoLink').addEventListener("click", () => {
+            document.getElementById('about').scrollIntoView({ behavior: "smooth" });
+        }, false);
+
         const navLinks = document.querySelectorAll('.nav-link');
 
         function clearLinkActive() {
@@ -216,7 +244,6 @@
 
         window.addEventListener('scroll', function () {
             let scrollpos = window.scrollY;
-            console.log(window.scrollY);
             if (0 < scrollpos && scrollpos < 700) {
                 clearLinkActive();
                 document.querySelector('#homeLink').classList.add('nav-active');
