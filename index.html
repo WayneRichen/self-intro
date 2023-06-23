@@ -196,8 +196,8 @@
             clearInterval(loop);
         });
         document.getElementsByClassName("prev")[0].addEventListener("click", function () {
-            showNextSlide();
             showPreviousSlide();
+            clearInterval(loop);
         });
         showSlide(currentSlide);
 
